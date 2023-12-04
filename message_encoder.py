@@ -1,32 +1,28 @@
 def encode_message(message_type, sender_id, recipient_id, payload):
-    """
-    Encodes a message into JSON format.
-
-    Args:
-        message_type (str): Type of the message (e.g., request, response, information)
-        sender_id (str): Identifier of the sending language model
-        recipient_id (str): Identifier of the receiving language model (optional for broadcast messages)
-        payload (dict): Data structure carrying the message content
-    """
-    message = {
-        "message_type": message_type,
-        "sender": sender_id,
-        "recipient": recipient_id,
-        "payload": payload
-    }
-
-    return json.dumps(message)
-
-def encode_message(message_type, sender_id, recipient_id, payload):
     # Validate message structure and fields before encoding
-    ...
+    required_fields = ["message_type", "sender", "recipient", "payload"]
+    for field in required_fields:
+        if not field:
+            raise ValueError(f"Missing required field: {field}")
+
+    # Validate message type
+    if message_type not in VALID_MESSAGE_TYPES:
+        raise ValueError(f"Invalid message type: {message_type}")
+
+    # Validate sender ID and recipient ID
+    if not validate_id(sender_id):
+        raise ValueError(f"Invalid sender ID: {sender_id}")
+
+    # Validate payload
+    if not isinstance(payload, dict):
+        raise ValueError(f"Payload must be a dictionary: {payload}")
 
     # Encode the message if valid
     message = {
         "message_type": message_type,
         "sender": sender_id,
         "recipient": recipient_id,
-        "payload": payload
+        "payload": payload,
     }
 
     return json.dumps(message)

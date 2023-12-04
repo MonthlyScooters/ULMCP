@@ -67,3 +67,18 @@ class MessageRouter:
 
             # Log the error and discard the message if retry limit reached
             ...
+class MessageRouter:
+    # ... existing routing logic ...
+
+    def route_message(self, encoded_message):
+        # ... existing routing logic ...
+
+        # Check if the recipient is unavailable
+        is_unavailable = self.check_unavailability(recipient_id)
+
+        if is_unavailable:
+            # Generate appropriate error message
+            ...
+
+            # Discard the message
+            ...

@@ -16,3 +16,17 @@ def encode_message(message_type, sender_id, recipient_id, payload):
     }
 
     return json.dumps(message)
+
+def encode_message(message_type, sender_id, recipient_id, payload):
+    # Validate message structure and fields before encoding
+    ...
+
+    # Encode the message if valid
+    message = {
+        "message_type": message_type,
+        "sender": sender_id,
+        "recipient": recipient_id,
+        "payload": payload
+    }
+
+    return json.dumps(message)

@@ -44,3 +44,26 @@ class MessageRouter:
     def deliver_message(self, encoded_message, recipient_id):
         # Implement actual message delivery mechanism (e.g., network communication)
         print(f"Delivering message to {recipient_id}")
+
+class MessageRouter:
+    # ... existing routing logic ...
+
+    def deliver_message(self, encoded_message, recipient_id):
+        # Implement actual message delivery mechanism
+        ...
+
+        try:
+            # Attempt message delivery
+            ...
+        except Exception as e:
+            # Handle delivery failure
+            ...
+
+            # Check error code and generate appropriate error message
+            ...
+
+            # Implement retry mechanism with backoff algorithm
+            ...
+
+            # Log the error and discard the message if retry limit reached
+            ...
